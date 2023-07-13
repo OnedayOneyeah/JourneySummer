@@ -1,8 +1,15 @@
 // guess의 정답을 판단하고 처리하는 함수 선언
-export function checkGuess() {
-  // 추측 횟수 1 증가
-  numGuesses++;
-
+export function checkGuess(
+  numGuesses,
+  guessInput,
+  answerSong,
+  guessedContainer,
+  hintContainer,
+  guessBtn,
+  resultContainer,
+  hintImage,
+  hintArray
+) {
   // input 창에 있는 값을 guess로 가져옴
   const guess = guessInput.value.toLowerCase();
 
@@ -51,4 +58,5 @@ export function checkGuess() {
 
     hintImage.src = hintArray[numGuesses];
   }
+  console.log(numGuesses);
 }

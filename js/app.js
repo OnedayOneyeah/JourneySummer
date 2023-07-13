@@ -1,37 +1,29 @@
-import { checkGuess } from "./checkGuess.js";
+import { Game } from "./game.js";
+// import { Configuration, OpenAIApi } from "openai";
 
-// Get the necessary HTML elements
-const hintContainer = document.getElementById("hint-container");
-const hintImage = document.getElementById("hint-image");
-const guessInput = document.getElementById("guess-input");
-const guessBtn = document.getElementById("guess-btn");
-const guessedContainer = document.getElementById("guessed-container");
-const resultContainer = document.getElementById("result-container");
+// const apiKey = process.env.OPENAI_API_KEY;
 
-// 힌트 6개 배열 생성. (지금은 assets에 있는 고정값이지만 나중에는 서버에서 가져오는 방법 생각)
-var hintArray = [];
-for (var i = 1; i <= 6; i++) {
-  var hintSrc = `./assets/hint${i}.png`;
+// // OpenAI API 환경 변수 설정
+// const configuration = new Configuration({
+//   apiKey: apiKey,
+// });
 
-  hintArray.push(hintSrc);
-}
+// const openai = new OpenAIApi(configuration);
 
-// 정답 단어 선언. (이것도 지금은 고정값이지만 나중에는 서버에서 불러와야 함)
-var answerSong = "Attention";
-var answerArtist = "Newjeans";
+// console.log(openai);
 
-// guess 횟수. 6번 됐을 시 추리 화면 끝나게끔
-var numGuesses = 0;
+// 새로운 Game 인스턴스 생성
+const game = new Game();
 
-// numGuesses를 index로 사용하여 hintArray로 받은 src를 <img> tag에 전달
-hintImage.src = hintArray[numGuesses];
-
-// guessBtn click했을 때 checkGuess() 실행
-guessBtn.addEventListener("click", checkGuess);
-
-// 엔터키 눌렀을 때도 실행되게끔 구현
-guessInput.addEventListener("keydown", function (event) {
+// 'guess' 버튼 클릭하거나 'Enter' 키 입력 시 numGuess 1 증가 및 checkGuess 실행
+game.guessBtn.addEventListener("click", handleGuess);
+game.guessInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    checkGuess();
+    handleGuess();
   }
 });
+
+function handleGuess() {
+  game.incrementGuesses();
+  game.checkGuess();
+}
