@@ -1,16 +1,15 @@
 import { Game } from "./game.js";
-// import { Configuration, OpenAIApi } from "openai";
+import { fetchImageURL } from "./api/image.js";
 
-// const apiKey = process.env.OPENAI_API_KEY;
-
-// // OpenAI API 환경 변수 설정
-// const configuration = new Configuration({
-//   apiKey: apiKey,
-// });
-
-// const openai = new OpenAIApi(configuration);
-
-// console.log(openai);
+/* openai 이미지 생성 함수. 테스트 필요할 시에만 주석 풀고 진행하기
+(async () => {
+  const imageUrl = await fetchImageURL();
+  if (imageUrl) {
+    console.log(imageUrl);
+    // Further processing or displaying of the image URL can be done here
+  }
+})();
+*/
 
 // 새로운 Game 인스턴스 생성
 const game = new Game();
